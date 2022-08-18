@@ -44,7 +44,7 @@ export default function Dog() {
     <div className="buttonContainer">
       <button onClick={() => setDisplay(!display)}> Add a Dog </button>
     </div>
-    <DogContainer dogs={dogs} updateDoy={updateDog} deleteDog={deleteDog}/>
+    <DogContainer dogs={dogs} updateDog={updateDog} deleteDog={deleteDog}/>
   </>
   )
 }
