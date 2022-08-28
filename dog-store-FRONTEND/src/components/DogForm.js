@@ -3,29 +3,45 @@ import {useState} from 'react'
 
 
 function DogForm({addDog}){
-    let [image, setImage] = useState("")
-    let [name, setName] = useState("")
+  const [formData, setFormData] = useState({
+    name: "",
+    image: "",
     
+  });
+   
+  function handleChange(event) {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  }
 
     let handleSubmit = (e) => {
        e.preventDefault()
-        fetch("http://localhost:9292/dogs", {
+        
+       const newDog = {
+        ...formData,
+        likes: 0,
+        dog_store_id: 6,
+      };
+       
+      fetch("http://localhost:9292/dogs", {
           method: "POST",
           headers: {
             "Content-type": "Application/json"
           },
-          body: JSON.stringify({
-            image, 
-            name, 
-            likes: 0,
-          })
+          body: JSON.stringify(newDog),
         })
           .then(res => res.json())
           .then(newDog => {
-            addDog(newDog)
-            setImage("")
-            setName("")
-         })
+            setFormData({
+              name: "",
+              image: "",
+              dog_store_id:""
+              
+            });
+            addDog(newDog);
+         });
       }
 
 
@@ -38,8 +54,8 @@ function DogForm({addDog}){
                 name="name" 
                 placeholder="Dog's name..." 
                 className="input-text"
-                value={name}
-                onChange={(e) => {setName(e.target.value)}}
+                onChange={handleChange}
+                value={formData.name}
               />
             <br/>
             <input 
@@ -47,10 +63,18 @@ function DogForm({addDog}){
                 name="image" 
                 placeholder="Dog's image URL..." 
                 className="input-text"
-                value={image}
-                onChange={(e) => {setImage(e.target.value)}}
+                value={formData.image}
+                onChange={handleChange}
             />
             <br/>
+            {/* <input 
+                type="text" 
+                name="dog_store_id" 
+                placeholder="Store ID" 
+                className="input-text"
+                value={formData.dog_store_id}
+                onChange={handleChange}
+            /> */}
             <input 
                 type="submit" 
                 name="submit" 

@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_14_080509) do
+ActiveRecord::Schema.define(version: 2022_08_23_181251) do
 
-  create_table "Dogs", force: :cascade do |t|
+  create_table "dog_stores", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+  end
+
+  create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.integer "likes"
-    t.integer "dogsStore_id"
-  end
-
-  create_table "dogs_store", force: :cascade do |t|
-    t.string "name"
+    t.integer "dog_store_id"
   end
 
 end

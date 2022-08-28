@@ -30,11 +30,24 @@ body {
   text-align: center;
   border: grey solid 1px;
   padding: 1rem;
-  width: 15rem;
-  height: 25rem;
+  width: 20rem;
+  height: 30rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px black
+  box-shadow: 3px 4px black;
+  
+}
+
+.store_name{
+  color: #11cdd4;
+  text-shadow: 1px 1px black;
+  font-size: 1.2rem;
+}
+
+.store_location{
+  color: blueviolet;
+  text-shadow: 1px 1px black;
+  font-size: 1.2rem;
 }
 
 .likes{

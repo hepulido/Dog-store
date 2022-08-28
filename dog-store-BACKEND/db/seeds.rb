@@ -32,6 +32,17 @@ dogs = [
 
   dogs.each do |dog_hash|
     Dog.create(dog_hash)
-end
+  end
+  10.times do
+    DogStore.create(
+      name: "#{Faker::Games::Heroes.klass}'s Pets",
+      location: Faker::Address.full_address
+    )
+  end
+  
+  Dog.all.each do |dog|
+    dog.dog_store_id = DogStore.all.sample.id
+    dog.save
+  end
 
 puts "woof, woof"

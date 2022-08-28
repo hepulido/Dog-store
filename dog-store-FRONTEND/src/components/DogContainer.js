@@ -2,17 +2,17 @@
 import DogCard from './DogCard'
 
  function DogContainer({dogs, updateDog , deleteDog}){
-  console.log(updateDog)
-  console.log(deleteDog)
+
    return(
         <div id="dog-cards">
             {dogs.map((dog)=>(
               <DogCard 
-              dog={dog}
                key={dog.id} 
+               dog={dog}
                updateDog={updateDog} 
                deleteDog={deleteDog}
-               />
+               store={dog.dog_store}
+                />
               ))} 
         </div>
       

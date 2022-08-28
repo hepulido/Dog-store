@@ -8,11 +8,12 @@ export default function Dog() {
   const [display, setDisplay] = useState(false)
   const [dogs, setDogs] = useState([])
   
+  console.log("DOGS: ", dogs);
   useEffect(() => {
     fetch("http://localhost:9292/dogs")
       .then(res => res.json())
       .then(dogsArr => {
-        setDogs(dogsArr)
+        setDogs([...dogsArr])
        })
    }, [])
 
@@ -31,7 +32,7 @@ export default function Dog() {
     })
      setDogs(updatedDogsArr)
   }
-   console.log(updateDog)
+   
   let deleteDog = (dogId) => {
     let deletedDogsArr = dogs.filter(dog => dog.id !== dogId)
     setDogs(deletedDogsArr)
